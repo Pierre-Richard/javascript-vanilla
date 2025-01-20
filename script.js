@@ -20,3 +20,13 @@ let fruits = [
   "Coconut",
   "Litchi",
 ];
+fruits.sort();
+console.log("fruits", fruits);
+// 1- recuperer la valeur du input
+let input = document.querySelector("input");
+
+// 2 - ecouter l'evenement sur le champ input
+input.addEventListener("change", () => {
+  console.log("La valeur du champ", input.value);
+});
+console.log("input", input.value);
