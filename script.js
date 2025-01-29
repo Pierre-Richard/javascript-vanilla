@@ -39,10 +39,23 @@ let input = document.querySelector("input");
 
 // 2 - ecouter l'evenement sur le champ input
 input.addEventListener("keyup", (event) => {
-  //
+  //1 recuperer la valeur du input
   let value = event.target.value;
-  if (value === fruits[0]) {
-    return console.log("Valeur", value);
+  //si la valeur existe UI change me renvoi la bonne valeur
+  //   fruits.forEach((fruit) => {
+  //     if (fruit === value) {
+  //       return console.log("okok");
+  //     }
+  //   });
+
+  for (let i = 0; i < fruits.length; i++) {
+    //crée une liste
+    let baliseLi = document.createElement("li");
+    baliseLi.innerHTML = fruits[i];
+    baliseUl.appendChild(baliseLi);
   }
+
+  document.querySelector(".container-list").appendChild(baliseUl);
 });
+
 console.log("input", input.value);
