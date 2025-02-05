@@ -20,8 +20,6 @@ let fruits = [
   "Coconut",
   "Litchi",
 ];
-fruits.sort();
-console.log("fruits", fruits);
 
 // créer une liste
 let baliseUl = document.createElement("ul");
@@ -35,27 +33,24 @@ for (let i = 0; i < fruits.length; i++) {
 
 document.querySelector(".container-list").appendChild(baliseUl);
 // 1- recuperer la valeur du input
-let input = document.querySelector("input");
+let input = document.querySelector("#input");
 
 // 2 - ecouter l'evenement sur le champ input
 input.addEventListener("keyup", (event) => {
   //1 recuperer la valeur du input
-  let value = event.target.value;
-  //si la valeur existe UI change me renvoi la bonne valeur
-  //   fruits.forEach((fruit) => {
-  //     if (fruit === value) {
-  //       return console.log("okok");
-  //     }
-  //   });
-
-  for (let i = 0; i < fruits.length; i++) {
-    //crée une liste
-    let baliseLi = document.createElement("li");
-    baliseLi.innerHTML = fruits[i];
-    baliseUl.appendChild(baliseLi);
+  let inputValue = event.target.inputValue;
+  //Effectuer un filtre sur mon tableau de fruit
+  let filteredFruit = fruits.filter((fruit) => fruit.includes(inputValue));
+  console.log("filteredFruit", filteredFruit);
+  //Supprimer l'affichage de ma liste
+  baliseUl.innerHTML = "";
+  // generé une nouvelle liste
+  for (let i = 0; i < filteredFruit.length; i++) {
+    // 1- créer la liste
+    let baliseListe = document.createElement("li");
+    baliseListe.innerHTML = filteredFruit[i];
+    baliseUl.appendChild(baliseListe);
   }
 
   document.querySelector(".container-list").appendChild(baliseUl);
 });
-
-console.log("input", input.value);
