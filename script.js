@@ -39,10 +39,15 @@ let input = document.querySelector("#input");
 input.addEventListener("keyup", (event) => {
   //1 recuperer la valeur du input
   let inputValue = event.target.value;
-  console.log("InputValue", inputValue.toUpperCase());
+  let firstLetterOfString =
+    inputValue.charAt(0).toUpperCase() + inputValue.slice(1);
+  console.log(
+    "InputValue",
+    inputValue.charAt(0).toUpperCase() + inputValue.slice(1)
+  );
   //Effectuer un filtre sur mon tableau de fruit
   let filteredFruit = fruits.filter((fruit) =>
-    fruit.includes(inputValue.toUpperCase())
+    fruit.includes(firstLetterOfString)
   );
   console.log("filteredFruit", filteredFruit);
   //Supprimer l'affichage de ma liste
