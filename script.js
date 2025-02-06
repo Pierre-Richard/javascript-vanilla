@@ -62,3 +62,8 @@ input.addEventListener("keyup", (event) => {
 
   document.querySelector(".container-list").appendChild(baliseUl);
 });
+//todo
+// Mettre la premiere lettre du mots du input en majuscule Done
+// Créer un tableau  d'objet ( id, name, description)
+// Créer la page de detail ( lorsque je clique sur un fruit cela me conduit sur la page de detail)
+// Faire le CSS
