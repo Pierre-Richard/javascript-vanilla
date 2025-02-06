@@ -38,9 +38,12 @@ let input = document.querySelector("#input");
 // 2 - ecouter l'evenement sur le champ input
 input.addEventListener("keyup", (event) => {
   //1 recuperer la valeur du input
-  let inputValue = event.target.inputValue;
+  let inputValue = event.target.value;
+  console.log("InputValue", inputValue.toUpperCase());
   //Effectuer un filtre sur mon tableau de fruit
-  let filteredFruit = fruits.filter((fruit) => fruit.includes(inputValue));
+  let filteredFruit = fruits.filter((fruit) =>
+    fruit.includes(inputValue.toUpperCase())
+  );
   console.log("filteredFruit", filteredFruit);
   //Supprimer l'affichage de ma liste
   baliseUl.innerHTML = "";
