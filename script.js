@@ -134,11 +134,18 @@ input.addEventListener("keyup", (event) => {
   for (let i = 0; i < filteredFruit.length; i++) {
     // 1- créer la liste
     let baliseListe = document.createElement("li");
+    let button = document.createElement("button");
+    console.log("Button", button);
+    button.innerHTML = baliseListe;
     baliseListe.innerHTML = filteredFruit[i].name;
     baliseUl.appendChild(baliseListe);
   }
 
   document.querySelector(".container-list").appendChild(baliseUl);
+});
+let baliseLi = document.createComment("li");
+baliseLi.addEventListener("click", () => {
+  console.log("li");
 });
 //todo
 // Mettre la premiere lettre du mots du input en majuscule Done
