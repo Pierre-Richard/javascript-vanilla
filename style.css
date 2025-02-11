@@ -9,5 +9,10 @@
 }
 
 li {
+  background-color: white;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 5px;
   cursor: pointer;
+  box-shadow: ;
 }
