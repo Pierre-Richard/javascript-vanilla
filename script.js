@@ -144,8 +144,10 @@ input.addEventListener("keyup", (event) => {
   document.querySelector(".container-list").appendChild(baliseUl);
 });
 let baliseLi = document.createComment("li");
-baliseLi.addEventListener("click", () => {
-  console.log("li");
+document.querySelectorAll("ul li").forEach((item) => {
+  item.addEventListener("click", () => {
+    console.log("Tu cliques sur la liste");
+  });
 });
 //todo
 // Mettre la premiere lettre du mots du input en majuscule Done
