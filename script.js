@@ -142,9 +142,9 @@ input.addEventListener("keyup", (event) => {
 });
 console.log("SEE", document.querySelectorAll("ul li"));
 let baliseLi = document.createComment("li");
-document.querySelectorAll("ul").forEach((item) => {
+document.querySelectorAll("ul li").forEach((item) => {
   item.addEventListener("click", () => {
-    console.log("Item", item.id);
+    console.log("Item", item.innerText);
   });
 });
 //todo
