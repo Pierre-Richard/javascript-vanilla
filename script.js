@@ -108,8 +108,10 @@ let baliseUl = document.createElement("ul");
 for (let i = 0; i < fruits.length; i++) {
   //crée une liste
   let baliseLi = document.createElement("li");
+  baliseLi.setAttribute("id", `${fruits[i].id}`);
   baliseLi.innerHTML = fruits[i].name;
   baliseUl.appendChild(baliseLi);
+  //console.log("ID de la première liste", `${fruits[i].id}`);
 }
 
 document.querySelector(".container-list").appendChild(baliseUl);
@@ -122,7 +124,7 @@ input.addEventListener("keyup", (event) => {
   let inputValue = event.target.value;
   let firstLetterOfString =
     inputValue.charAt(0).toUpperCase() + inputValue.slice(1);
-  console.log("InputValueChartAt", inputValue.charAt(0) + inputValue.slice(1));
+  //console.log("InputValueChartAt", inputValue.charAt(0) + inputValue.slice(1));
   //Effectuer un filtre sur mon tableau de fruit
   let filteredFruit = fruits.filter((fruit) =>
     fruit.name.includes(firstLetterOfString)
@@ -134,19 +136,23 @@ input.addEventListener("keyup", (event) => {
   for (let i = 0; i < filteredFruit.length; i++) {
     // 1- créer la liste
     let baliseListe = document.createElement("li");
+    baliseListe.setAttribute("id", `${filteredFruit[i].id}`); // Ajouter un ID unique
     baliseListe.innerHTML = filteredFruit[i].name;
     baliseUl.appendChild(baliseListe);
+    console.log("Id", `${filteredFruit[i].id}`);
   }
+
+  //console.log("SEE", document.querySelectorAll("ul li"));
+
+  document.querySelectorAll("ul li").forEach((item) => {
+    item.addEventListener("click", () => {
+      console.log("ID de l'élément cliqué :", item.getAttribute("id"));
+    });
+  });
 
   document.querySelector(".container-list").appendChild(baliseUl);
 });
-console.log("SEE", document.querySelectorAll("ul li"));
-let baliseLi = document.createComment("li");
-document.querySelectorAll("ul li").forEach((item) => {
-  item.addEventListener("click", () => {
-    console.log("Item", item.innerText);
-  });
-});
+
 //todo
 // Mettre la premiere lettre du mots du input en majuscule Done
 // Créer un tableau  d'objet ( id, name, description) Done
