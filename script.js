@@ -136,8 +136,11 @@ input.addEventListener("keyup", (event) => {
   for (let i = 0; i < filteredFruit.length; i++) {
     // 1- créer la liste
     let baliseListe = document.createElement("li");
+    // donne une attribut id à mon li
     baliseListe.setAttribute("id", `${filteredFruit[i].id}`); // Ajouter un ID unique
+    // affiche ma valeur dans mon li
     baliseListe.innerHTML = filteredFruit[i].name;
+    // le parent du li sera ma balise UL
     baliseUl.appendChild(baliseListe);
     console.log("Id", `${filteredFruit[i].id}`);
   }
