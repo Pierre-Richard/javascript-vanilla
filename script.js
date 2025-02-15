@@ -136,20 +136,20 @@ input.addEventListener("keyup", (event) => {
   for (let i = 0; i < filteredFruit.length; i++) {
     // 1- créer la liste
     let baliseListe = document.createElement("li");
-    // donne une attribut id à mon li
-    baliseListe.setAttribute("id", `${filteredFruit[i].id}`); // Ajouter un ID unique
-    // affiche ma valeur dans mon li
-    baliseListe.innerHTML = filteredFruit[i].name;
-    // le parent du li sera ma balise UL
+    let baliseA = document.createElement("a");
+    baliseListe.appendChild(baliseA);
+    baliseA.setAttribute("href", `${filteredFruit[i].id}`); // Ajouter un ID unique
+    console.log("VOIR", baliseListe);
+    baliseA.textContent = filteredFruit[i].name;
     baliseUl.appendChild(baliseListe);
     console.log("Id", `${filteredFruit[i].id}`);
   }
 
   //console.log("SEE", document.querySelectorAll("ul li"));
 
-  document.querySelectorAll("ul li").forEach((item) => {
+  document.querySelectorAll("ul li a").forEach((item) => {
     item.addEventListener("click", () => {
-      console.log("ID de l'élément cliqué :", item.getAttribute("id"));
+      console.log("ID de l'élément cliqué :", item.getAttribute("href"));
     });
   });
 
