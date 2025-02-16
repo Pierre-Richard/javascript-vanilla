@@ -105,14 +105,17 @@ let fruits = [
 // créer une liste
 let baliseUl = document.createElement("ul");
 
-for (let i = 0; i < fruits.length; i++) {
-  //crée une liste
-  let baliseLi = document.createElement("li");
-  baliseLi.setAttribute("id", `${fruits[i].id}`);
-  baliseLi.innerHTML = fruits[i].name;
-  baliseUl.appendChild(baliseLi);
-  //console.log("ID de la première liste", `${fruits[i].id}`);
+function generateListe(liste) {
+  for (let i = 0; i < liste.length; i++) {
+    //crée une liste
+    let baliseLi = document.createElement("li");
+    baliseLi.setAttribute("id", `${liste[i].id}`);
+    baliseLi.innerHTML = liste[i].name;
+    baliseUl.appendChild(baliseLi);
+    console.log("ID de la première liste", `${liste[i].id}`);
+  }
 }
+generateListe(fruits);
 
 document.querySelector(".container-list").appendChild(baliseUl);
 // 1- recuperer la valeur du input
@@ -133,14 +136,8 @@ input.addEventListener("keyup", (event) => {
   //Supprimer l'affichage de ma liste
   baliseUl.innerHTML = "";
   // generé une nouvelle liste
-  for (let i = 0; i < filteredFruit.length; i++) {
-    // 1- créer la liste
-    let baliseListe = document.createElement("li");
-    baliseListe.setAttribute("id", `${filteredFruit[i].id}`); // Ajouter un ID unique
-    baliseListe.innerHTML = filteredFruit[i].name;
-    baliseUl.appendChild(baliseListe);
-    console.log("Id", `${filteredFruit[i].id}`);
-  }
+
+  generateListe(filteredFruit);
 
   //console.log("SEE", document.querySelectorAll("ul li"));
   // créer une fonction qui renvoie le nom  selon son id
@@ -151,7 +148,6 @@ input.addEventListener("keyup", (event) => {
 
       let id = item.getAttribute("id");
       let name = item.textContent; // Récupérer le nom du fruit
-      console.log("loool", id);
       let fruit = fruits.find((f) => f.id === Number(id));
 
       if (!fruit) {
