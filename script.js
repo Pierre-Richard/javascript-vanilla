@@ -152,9 +152,19 @@ input.addEventListener("keyup", (event) => {
       let id = item.getAttribute("id");
       let name = item.textContent; // Récupérer le nom du fruit
       console.log("loool", id);
+      let fruit = fruits.find((f) => f.id === Number(id));
+
+      if (!fruit) {
+        console.error("Fruit non trouvé !");
+        return; // Sortir de la fonction si aucun fruit trouvé
+      }
+
+      let description = fruit.description;
 
       // Construire l'URL avec les paramètres
-      let url = `details.html?id=${id}&name=${encodeURIComponent(name)}`;
+      let url = `details.html?id=${id}&name=${encodeURIComponent(
+        name
+      )}&description=${encodeURIComponent(description)}`;
 
       // Rediriger vers la nouvelle page
       window.location.href = url;
