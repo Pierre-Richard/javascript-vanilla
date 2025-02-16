@@ -136,20 +136,28 @@ input.addEventListener("keyup", (event) => {
   for (let i = 0; i < filteredFruit.length; i++) {
     // 1- créer la liste
     let baliseListe = document.createElement("li");
-    let baliseA = document.createElement("a");
-    baliseListe.appendChild(baliseA);
-    baliseA.setAttribute("href", `${filteredFruit[i].id}`); // Ajouter un ID unique
-    console.log("VOIR", baliseListe);
-    baliseA.textContent = filteredFruit[i].name;
+    baliseListe.setAttribute("id", `${filteredFruit[i].id}`); // Ajouter un ID unique
+    baliseListe.innerHTML = filteredFruit[i].name;
     baliseUl.appendChild(baliseListe);
     console.log("Id", `${filteredFruit[i].id}`);
   }
 
   //console.log("SEE", document.querySelectorAll("ul li"));
+  // créer une fonction qui renvoie le nom  selon son id
 
-  document.querySelectorAll("ul li a").forEach((item) => {
-    item.addEventListener("click", () => {
-      console.log("ID de l'élément cliqué :", item.getAttribute("href"));
+  document.querySelectorAll("ul li").forEach((item) => {
+    item.addEventListener("click", (event) => {
+      event.preventDefault(); // Empêcher la navigation par défaut
+
+      let id = item.getAttribute("id");
+      let name = item.textContent; // Récupérer le nom du fruit
+      console.log("loool", id);
+
+      // Construire l'URL avec les paramètres
+      let url = `details.html?id=${id}&name=${encodeURIComponent(name)}`;
+
+      // Rediriger vers la nouvelle page
+      window.location.href = url;
     });
   });
 
