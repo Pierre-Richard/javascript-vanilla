@@ -115,8 +115,33 @@ function generateListe(liste) {
     console.log("ID de la première liste", `${liste[i].id}`);
   }
 }
-generateListe(fruits);
 
+baliseUl.addEventListener("click", (event) => {
+  if (event.target.tagName === "LI") {
+    event.preventDefault(); // Empêcher la navigation par défaut
+
+    let id = event.target.getAttribute("id");
+    let name = event.target.textContent; // Récupérer le nom du fruitséa
+    let fruit = fruits.find((f) => f.id === Number(id));
+
+    if (!fruit) {
+      console.error("Fruit non trouvé !");
+      return; // Sortir de la fonction si aucun fruit trouvé
+    }
+
+    let description = fruit.description;
+
+    // Construire l'URL avec les paramètres
+    let url = `details.html?id=${id}&name=${encodeURIComponent(
+      name
+    )}&description=${encodeURIComponent(description)}`;
+
+    // Rediriger vers la nouvelle page
+    window.location.href = url;
+  }
+});
+
+generateListe(fruits);
 document.querySelector(".container-list").appendChild(baliseUl);
 // 1- recuperer la valeur du input
 let input = document.querySelector("#input");
@@ -132,42 +157,10 @@ input.addEventListener("keyup", (event) => {
   let filteredFruit = fruits.filter((fruit) =>
     fruit.name.includes(firstLetterOfString)
   );
-  console.log("filteredFruit", filteredFruit);
-  //Supprimer l'affichage de ma liste
+
   baliseUl.innerHTML = "";
-  // generé une nouvelle liste
 
   generateListe(filteredFruit);
-
-  //console.log("SEE", document.querySelectorAll("ul li"));
-  // créer une fonction qui renvoie le nom  selon son id
-
-  document.querySelectorAll("ul li").forEach((item) => {
-    item.addEventListener("click", (event) => {
-      event.preventDefault(); // Empêcher la navigation par défaut
-
-      let id = item.getAttribute("id");
-      let name = item.textContent; // Récupérer le nom du fruit
-      let fruit = fruits.find((f) => f.id === Number(id));
-
-      if (!fruit) {
-        console.error("Fruit non trouvé !");
-        return; // Sortir de la fonction si aucun fruit trouvé
-      }
-
-      let description = fruit.description;
-
-      // Construire l'URL avec les paramètres
-      let url = `details.html?id=${id}&name=${encodeURIComponent(
-        name
-      )}&description=${encodeURIComponent(description)}`;
-
-      // Rediriger vers la nouvelle page
-      window.location.href = url;
-    });
-  });
-
-  document.querySelector(".container-list").appendChild(baliseUl);
 });
 
 //todo
