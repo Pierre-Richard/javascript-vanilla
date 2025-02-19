@@ -2,7 +2,7 @@
 let params = new URLSearchParams(window.location.search);
 let id = params.get("id");
 let name = params.get("name");
-let d = params.get("description");
+let description = params.get("description");
 
 // Vérifier si les paramètres existent et les afficher
 if (id && name) {
@@ -10,6 +10,6 @@ if (id && name) {
     <h2>Fruit sélectionné</h2>
     <p>ID: ${id}</p>
     <p>Nom: ${decodeURIComponent(name)}</p>
-    <p>Description: ${decodeURIComponent(d)}</p>
+    <p>Description: ${decodeURIComponent(description)}</p>
   `;
 }

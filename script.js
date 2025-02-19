@@ -123,8 +123,8 @@ baliseUl.addEventListener("click", (event) => {
     event.preventDefault(); // Empêcher la navigation par défaut
 
     let id = event.target.getAttribute("id");
-    let name = event.target.textContent; // Récupérer le nom du fruit
-    let fruit = fruits.find((f) => f.id === Number(id));
+    let name = event.target.textContent; // Récupére le nom du fruit
+    let fruit = fruits.find((f) => f.id === Number(id)); // Récupere l'id du fruit
 
     if (!fruit) {
       console.error("Fruit non trouvé !");
