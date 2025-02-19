@@ -1,3 +1,4 @@
+// Création de mon tableau fruits
 let fruits = [
   {
     id: 1,
@@ -105,6 +106,7 @@ let fruits = [
 // créer une liste
 let baliseUl = document.createElement("ul");
 
+// création de ma fonction qui me generer ma liste
 function generateListe(liste) {
   for (let i = 0; i < liste.length; i++) {
     //crée une liste
@@ -112,7 +114,7 @@ function generateListe(liste) {
     baliseLi.setAttribute("id", `${liste[i].id}`);
     baliseLi.innerHTML = liste[i].name;
     baliseUl.appendChild(baliseLi);
-    console.log("ID de la première liste", `${liste[i].id}`);
+    //console.log("ID de la première liste", `${liste[i].id}`);
   }
 }
 
@@ -121,7 +123,7 @@ baliseUl.addEventListener("click", (event) => {
     event.preventDefault(); // Empêcher la navigation par défaut
 
     let id = event.target.getAttribute("id");
-    let name = event.target.textContent; // Récupérer le nom du fruitséa
+    let name = event.target.textContent; // Récupérer le nom du fruit
     let fruit = fruits.find((f) => f.id === Number(id));
 
     if (!fruit) {
@@ -132,9 +134,7 @@ baliseUl.addEventListener("click", (event) => {
     let description = fruit.description;
 
     // Construire l'URL avec les paramètres
-    let url = `details.html?id=${id}&name=${encodeURIComponent(
-      name
-    )}&description=${encodeURIComponent(description)}`;
+    let url = `details.html?id=${id}&name=${name}&description=${description}`;
 
     // Rediriger vers la nouvelle page
     window.location.href = url;
@@ -152,7 +152,6 @@ input.addEventListener("keyup", (event) => {
   let inputValue = event.target.value;
   let firstLetterOfString =
     inputValue.charAt(0).toUpperCase() + inputValue.slice(1);
-  //console.log("InputValueChartAt", inputValue.charAt(0) + inputValue.slice(1));
   //Effectuer un filtre sur mon tableau de fruit
   let filteredFruit = fruits.filter((fruit) =>
     fruit.name.includes(firstLetterOfString)
